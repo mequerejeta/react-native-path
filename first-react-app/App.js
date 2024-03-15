@@ -1,16 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React , {useState} from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 export default function App() {
+  const [textItem, setTextItem] = useState('')
+  const [itemList, setItemList] = useState([])
+
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-          <TextInput placeholder='Item de lista' style={styles.inputView}/>
+          <TextInput placeholder='Item de lista'
+         value={textItem}
+          style={styles.inputView}/>
           <Button title='ADD'/>
       </View>
       <View style={styles.container}>
-
+      <TextInput placeholder='Items' style={styles.inputView}/>
+      <Button title='Agregar'/>
+        {itemList.map(item => <View style={styles.itemList}><Text>{item.value}</Text></View>)}
       </View>
 
     </View>
