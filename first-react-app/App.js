@@ -52,22 +52,7 @@ const addItem = () => {
            keyExtractor={(item) => item.id}
            />
         </View>
-        <Modal animationType= "slide"
-        visible={modalVisible}
-        >
-          <View style={styles.modalTitle}>
-              <Text>Mi Modal</Text>
-          </View>
-          <View style={styles.modalMessage}>
-            <Text>Esta seguro que desea borrar?</Text>
-          </View>
-          <View style={styles.modalMessage}>
-            <Text style={styles.modalItem}>{itemSelected.value}</Text>
-          </View>
-          <View style={styles.modalButton}>
-            <Button onPress={onHandlerDelete.bind(this, itemSelected.id)} title="CONFIRM"/>
-            </View>
-        </Modal>
+
     </View>
   );
 }
@@ -86,21 +71,5 @@ const styles = StyleSheet.create({
     borderBottomColor: 'black', 
     borderBottomWidth:1
   },
-  modalTitle: {
-    backgroundColor: '#ccc',
-    color: 'white',
-    fontSize: 18
-  },
-  modalMessage: {
-    marginBottom: 10,
-    marginBottom: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  modalButton: {
-    marginTop: 15
-  },
-  modalItem: {
-    fontSize: 30
-  }
+ 
 });
