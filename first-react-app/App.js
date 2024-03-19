@@ -1,6 +1,8 @@
 import { Button, Modal, StyleSheet, Text, TextInput, View } from 'react-native';
 import React , {useState} from 'react';
 
+import AddItem from './components/AddItem';
+import ModalComponent from './components/ModalComponent';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
@@ -25,13 +27,12 @@ const addItem = () => {
 }
   return (
     <View style={styles.screen}>
-        <View style={styles.container}>
-          <TextInput placeholder='Item de lista'
-            value={textItem}
-           style={styles.inputView}
-            onChangeText= {onHandlerChangeItem}/>
-           <Button title='ADD' onPress={addItem}/>
-        </View>
+        <ModalComponent 
+        visible={modalVisible}
+        onDelete={onHandlerDelete.bind(this, itemSelected.id)}
+        item={itemSelected}
+        />
+       
         <View style={styles.container}>
           <TextInput placeholder='Items' 
           style={styles.inputView}
@@ -61,15 +62,6 @@ const styles = StyleSheet.create({
   screen:{
     padding: 50
   },
-  container: {
-    flexDirection: 'row',
-    justifyContent:'space-between',
-    alignItems:'center'
-  },
-  inputView: {
-    width: 200,
-    borderBottomColor: 'black', 
-    borderBottomWidth:1
-  },
+ 
  
 });
