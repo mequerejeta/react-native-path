@@ -34,9 +34,11 @@ const addItem = () => {
         />
        
         <View style={styles.container}>
-          <TextInput placeholder='Items' 
-          style={styles.inputView}
-          onChangeText= {onHandlerChangeItem}/>
+          <AddItem 
+          onChange= {onHandlerChangeItem}
+          onAddItem={addItem}
+          value={textItem}
+          />
           <Button title='Agregar' onPress={addItem}/>
           {itemList.map(item => <View style={styles.itemList}><Text>{item.value}</Text></View>)}
         </View>
@@ -61,7 +63,7 @@ const addItem = () => {
 const styles = StyleSheet.create({
   screen:{
     padding: 50
-  },
+  }
  
  
 });
