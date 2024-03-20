@@ -1,8 +1,32 @@
-import { registerRootComponent } from 'expo';
+import {
+    FlatList,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View
+} from "react-native";
 
-import App from '../../App';
+const index = () => {
+    return (
+            <FlatList
+            data={itemList}
+            renderItem={data => (
+            <TouchableOpacity onPress={onHandlerDelete.bind(this, data.item, id)}>
+            <View style={styles.itemList}>
+                <Text>{data.item.value}</Text>
+            </View>
+            </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id}
+            />
+    );
+};
+const styles =  StyleSheet.create({
+    itemList: {
+        backgroundColor: "#ccc",
+        padding: 10,
+        margin: 5
+    },
+});
 
-// registerRootComponent calls AppRegistry.registerComponent('main', () => App);
-// It also ensures that whether you load the app in Expo Go or in a native build,
-// the environment is set up appropriately
-registerRootComponent(App);
+export default index;
