@@ -1,32 +1,29 @@
-import {
-    FlatList,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View
-} from "react-native";
+import React, { useState } from "react";
 
-const index = () => {
+import { FlatList } from "react-native";
+import ItemList from "./ItemList";
+
+const Index = () => {
+    const [itemList, setItemList] = useState([]); 
+
+ 
+    const onHandlerDelete = (id) => {
+        const updatedItemList = itemList.filter(item => item.id !== id);
+        setItemList(updatedItemList);
+    };
+
+
+    const renderItem = ({ item }) => (
+        <ItemList item={item} onHandlerDelete={onHandlerDelete} />
+    );
+
     return (
-            <FlatList
+        <FlatList
             data={itemList}
-            renderItem={data => (
-            <TouchableOpacity onPress={onHandlerDelete.bind(this, data.item, id)}>
-            <View style={styles.itemList}>
-                <Text>{data.item.value}</Text>
-            </View>
-            </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id}
-            />
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()} 
+        />
     );
 };
-const styles =  StyleSheet.create({
-    itemList: {
-        backgroundColor: "#ccc",
-        padding: 10,
-        margin: 5
-    },
-});
 
-export default index;
+export default Index;
