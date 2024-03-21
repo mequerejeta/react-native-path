@@ -3,25 +3,18 @@ import React, { useState } from "react";
 import { FlatList } from "react-native";
 import ItemList from "./ItemList";
 
-const Index = () => {
-    const [itemList, setItemList] = useState([]); 
-
- 
-    const onHandlerDelete = (id) => {
-        const updatedItemList = itemList.filter(item => item.id !== id);
-        setItemList(updatedItemList);
-    };
-
-
-    const renderItem = ({ item }) => (
-        <ItemList item={item} onHandlerDelete={onHandlerDelete} />
-    );
-
+const Index = ({itemList, onHandlerModal}) => {
     return (
         <FlatList
             data={itemList}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()} 
+            renderItem={({item}) => (
+                <ItemList
+                id={item.id}
+                value={item.value}
+                onPress={onHandlerModal}
+        />
+         )}
+        keyExtractor={(item) => item.id.toString()} 
         />
     );
 };

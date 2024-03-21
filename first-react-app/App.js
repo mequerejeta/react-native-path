@@ -2,6 +2,7 @@ import { Button, Modal, StyleSheet, Text, TextInput, View } from 'react-native';
 import React , {useState} from 'react';
 
 import AddItem from './components/AddItem';
+import Index from './components/List';
 import ModalComponent from './components/ModalComponent';
 import { StatusBar } from 'expo-status-bar';
 
@@ -43,7 +44,7 @@ const addItem = () => {
           {itemList.map(item => <View style={styles.itemList}><Text>{item.value}</Text></View>)}
         </View>
         <View style={styles.container}>
-          
+          <Index/>
         </View>
 
     </View>
